@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 09:46:01 by erli              #+#    #+#             */
-/*   Updated: 2019/01/09 11:44:45 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/09 19:21:08 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static	int		ch_swap(t_stacks *stacks, char *para)
 		ch_swap(stacks, "ch_sb");
 	}
 	else
-		return (ft_msg_int(2, "Invalid instruction un ch_swap\n", -1));
+		exit(ft_msg_int(2, "Invalid instruction un ch_swap\n", 0));
 	return (0);
 }
 
@@ -59,7 +59,7 @@ static	int		sw_swap(t_stacks *stacks, char *cmd, char *para)
 		sw_add_cmd(stacks, cmd, "ss");
 	}
 	else
-		return (ft_msg_int(2, "Invalid instruction un sw_swap\n", -1));
+		exit(ft_msg_int(2, "Invalid instruction un sw_swap\n", 0));
 	return (0);
 }
 
@@ -75,5 +75,6 @@ int				ps_swap(t_stacks *stacks, char *cmd, char *para)
 	if (ft_strncmp(para, "sw", 2) == 0)
 		return (sw_swap(stacks, cmd, para));
 	else
-		return (ft_msg_int(2, "Invalid instruction in swap/n", -1));
+		exit(ft_msg_int(2, "Invalid instruction in swap/n", 0));
+	return (0);
 }

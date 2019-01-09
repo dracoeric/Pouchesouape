@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 12:48:13 by erli              #+#    #+#             */
-/*   Updated: 2019/01/09 15:44:28 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/09 17:14:15 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,13 @@ static	int		count_nb(char *str)
 			i++;
 		if (str[i] == '+' || str[i] == '-')
 			i++;
-		if (str[i] < '0' || str[i] > '9')
+		if ((str[i] < '0' || str[i] > '9') && str[i] != '\0')
 		{
 			write(2, "Error\n", 6);
 			exit(0);
 		}
-		count++;
+		if (str[i] >= '0' && str[i] <= '9')
+			count++;
 		while (str[i] >= '0' && str[i] <= '9')
 			i++;
 	}

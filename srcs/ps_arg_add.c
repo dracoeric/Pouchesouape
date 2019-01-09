@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 12:48:13 by erli              #+#    #+#             */
-/*   Updated: 2019/01/09 16:26:38 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/09 18:57:06 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 #include "libft.h"
 #include <unistd.h>
 #include <stdlib.h>
+
+static	void	add_int_in_stacks(t_stacks *stacks, int nb, int *len)
+{
+	if (ft_int_in_ptr(nb, stacks->a, *len) == 1)
+	{
+		write(2, "Error\n", 6);
+		exit(0);
+	}
+	(stacks->a)[*len] = nb;
+	*len += 1;
+}
 
 static	int		ps_is_int(int nb, char *str, int *i, int sgn)
 {
@@ -69,9 +80,10 @@ static	void	ps_parse_atoi(t_stacks *stacks, char *str, int *len)
 			sgn = 44 - str[i];
 			i++;
 		}
+		if (str[i] == '\0')
+			return ;
 		nb = ps_atoi(str, &i, sgn);
-		(stacks->a)[*len] = nb;
-		*len += 1;
+		add_int_in_stacks(stacks, nb, len);
 	}
 }
 
