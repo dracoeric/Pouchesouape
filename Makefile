@@ -6,7 +6,7 @@
 #    By: erli <erli@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/08 14:34:35 by erli              #+#    #+#              #
-#    Updated: 2019/01/09 11:58:52 by erli             ###   ########.fr        #
+#    Updated: 2019/01/09 16:04:26 by erli             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -18,11 +18,11 @@ OBJSDIR		=		./objs
 
 SRCS1		=		main_checker.c			ps_swap.c				ps_move.c		\
 					ps_push.c				ps_rotate.c				ps_revrotate.c	\
-					sw_add_cmd.c
+					ps_arg_verif.c			ps_arg_add.c			sw_add_cmd.c
 
 SRCS2		=		main_push_swap.c		ps_swap.c				ps_move.c		\
 					ps_push.c				ps_rotate.c				ps_revrotate.c	\
-					sw_add_cmd.c
+					ps_arg_verif.c			ps_arg_add.c			sw_add_cmd.c
 					
 
 OBJS1		=		$(addprefix $(OBJSDIR)/, $(SRCS1:.c=.o))

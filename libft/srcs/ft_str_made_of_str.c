@@ -6,13 +6,13 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 12:55:32 by erli              #+#    #+#             */
-/*   Updated: 2019/01/09 12:57:32 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/09 13:45:58 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_str_made_or_str(char *str, char *base)
+int		ft_str_made_of_str(char *str, char *base)
 {
 	int i;
 
