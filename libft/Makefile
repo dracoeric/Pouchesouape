@@ -6,7 +6,7 @@
 #    By: erli <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/14 17:45:59 by erli              #+#    #+#              #
-#    Updated: 2018/12/07 15:10:25 by erli             ###   ########.fr        #
+#    Updated: 2019/01/09 12:59:31 by erli             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,7 +22,7 @@ SRCS		=		ft_atoi.c			ft_char_at_pos.c	ft_itoa.c			\
 					ft_isalpha.c		ft_isdigit.c		ft_isalnum.c		\
 					ft_isascii.c		ft_isprint.c		ft_msg_int.c		\
 					ft_msg_ptr.c		ft_dtoa.c			ft_ldtoa.c			\
-																				\
+															ft_str_made_of_str.c\
 					ft_bzero.c			ft_memalloc.c		ft_memalloc_c.c		\
 					ft_memccpy.c		ft_memchr.c			ft_memcmp.c			\
 					ft_memcpy.c			ft_memdel.c			ft_memmove.c		\
