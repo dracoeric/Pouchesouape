@@ -6,7 +6,7 @@
 #    By: erli <erli@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/08 14:34:35 by erli              #+#    #+#              #
-#    Updated: 2019/01/09 19:26:55 by erli             ###   ########.fr        #
+#    Updated: 2019/01/10 17:16:03 by erli             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -38,26 +38,34 @@ INCL		=		-I includes/ -I libft/includes/
 
 RM			=		rm -f
 
+FRAMEWORK	=		-framework OpenGL -framework AppKit
+
 LIB			=		libft/libft.a
 
+LIBMLX		=		minilibx_macos/libmlx.a
 
 all			:		$(NAME1) $(NAME2)
 
-$(NAME1)	:		$(OBJS1) $(LIB) includes/push_swap.h
-					$(CC) $(CFLAG) $(INCL) $(OBJS1) $(LIB) -o $(NAME1)
+$(NAME1)	:		$(OBJS1) $(LIB) $(LIBMLX) includes/push_swap.h
+					$(CC) $(CFLAG) $(INCL) $(OBJS1) $(LIB) $(LIBMLX) $(FRAMEWORK) \
+					-o $(NAME1)
 
 $(NAME2)	:		$(OBJS2) $(LIB) includes/push_swap.h
 					$(CC) $(CFLAG) $(OBJS2) $(LIB) -o $(NAME2)
 
-$(LIB)			:		
+$(LIB)		:		
 					make -C libft/
+
+$(LIBMLX)	:
+					make -C minilibx_macos/
 
 $(OBJSDIR)/%.o	:	$(SRCSDIR)/%.c includes/push_swap.h
 					@mkdir -p $(OBJSDIR)
 					$(CC) -c $(CFLAG) $(INCL) -c $< -o $@
 
-val1		:		$(OBJS1) $(LIB) includes/push_swap.h
-					$(CC) -g $(CFLAG) $(OBJS1) $(LIB) -o $(NAME1)
+val1		:		$(OBJS1) $(LIB) $(LIBMLX) includes/push_swap.h
+					$(CC) -g $(CFLAG) $(INCL) $(OBJS1) $(LIB) $(LIBMLX) $(FRAMEWORK) \
+					-o $(NAME1)
 
 val2		:		$(OBJS2) $(LIB) includes/push_swap.h
 					$(CC) -g $(CFLAG) $(OBJS2) $(LIB) -o $(NAME2)
