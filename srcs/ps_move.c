@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 10:43:34 by erli              #+#    #+#             */
-/*   Updated: 2019/01/09 11:19:21 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/10 12:01:07 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ static	int		move_up(t_stacks *stacks, int a_or_b)
 {
 	if (a_or_b == 1 && stacks->len_a > 0)
 	{
-		ft_memmove(((stacks->a) + 1), stacks->a, 4 * (stacks->len_a - 1));
+		ft_memmove(stacks->a, ((stacks->a) + 1), 4 * (stacks->len_a - 1));
 		stacks->len_a -= 1;
 	}
 	else if (a_or_b == 2 && stacks->len_b > 0)
 	{
-		ft_memmove(((stacks->b) + 1), stacks->b, 4 * (stacks->len_b - 1));
+		ft_memmove(stacks->b, ((stacks->b) + 1), 4 * (stacks->len_b - 1));
 		stacks->len_b -= 1;
 	}
 	else if (a_or_b == 3)
@@ -30,7 +30,8 @@ static	int		move_up(t_stacks *stacks, int a_or_b)
 		move_up(stacks, 1);
 		move_up(stacks, 2);
 	}
-	else
+	else if (!((a_or_b == 1 && stacks->len_a == 0)
+			|| (a_or_b == 2 && stacks->len_b == 0)))
 		return (ft_msg_int(2, "Invalid parameter in move_up\n", -1));
 	return (0);
 }
@@ -38,15 +39,16 @@ static	int		move_up(t_stacks *stacks, int a_or_b)
 static	int		move_down(t_stacks *stacks, int a_or_b)
 {
 	if (a_or_b == 1 && stacks->len_a > 0)
-		ft_memmove(stacks->a, ((stacks->a) + 1), 4 * stacks->len_a);
+		ft_memmove(((stacks->a) + 1), stacks->a, 4 * (stacks->len_a - 1));
 	else if (a_or_b == 2 && stacks->len_b > 0)
-		ft_memmove(stacks->b, ((stacks->b) + 1), 4 * stacks->len_b);
+		ft_memmove(((stacks->b) + 1), stacks->b, 4 * (stacks->len_b - 1));
 	else if (a_or_b == 3)
 	{
 		move_down(stacks, 1);
 		move_down(stacks, 2);
 	}
-	else
+	else if (!((a_or_b == 1 && stacks->len_a == 0)
+			|| (a_or_b == 2 && stacks->len_b == 0)))
 		return (ft_msg_int(2, "Invalid parameter in move_down\n", -1));
 	return (0);
 }

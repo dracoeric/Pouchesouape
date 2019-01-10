@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 09:46:01 by erli              #+#    #+#             */
-/*   Updated: 2019/01/09 11:58:17 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/10 11:59:25 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ static	int		ch_revrotate(t_stacks *stacks, char *para)
 		ch_revrotate(stacks, "ch_rra");
 		ch_revrotate(stacks, "ch_rrb");
 	}
-	else
+	else if (!((ft_strcmp(para, "ch_rra") == 0 && stacks->len_a < 2)
+			|| (ft_strcmp(para, "ch_rrb") == 0 && stacks->len_b < 2)))
 		return (ft_msg_int(2, "Invalid instruction un ch_revrotate\n", -1));
 	return (0);
 }
@@ -58,7 +59,8 @@ static	int		sw_revrotate(t_stacks *stacks, char *cmd, char *para)
 		ch_revrotate(stacks, "ch_rrb");
 		sw_add_cmd(stacks, cmd, "rrr");
 	}
-	else
+	else if (!((ft_strcmp(para, "sw_rra") == 0 && stacks->len_a < 2)
+			|| (ft_strcmp(para, "sw_rrb") == 0 && stacks->len_b < 2)))
 		return (ft_msg_int(2, "Invalid instruction un sw_revrotate\n", -1));
 	return (0);
 }

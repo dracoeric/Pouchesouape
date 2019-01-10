@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 09:46:01 by erli              #+#    #+#             */
-/*   Updated: 2019/01/09 11:53:20 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/10 11:59:03 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ static	int		ch_rotate(t_stacks *stacks, char *para)
 		ch_rotate(stacks, "ch_ra");
 		ch_rotate(stacks, "ch_rb");
 	}
-	else
+	else if (!((ft_strcmp(para, "ch_ra") == 0 && stacks->len_a < 2)
+			|| (ft_strcmp(para, "ch_rb") == 0 && stacks->len_b < 2)))
 		return (ft_msg_int(2, "Invalid instruction un ch_rotate\n", -1));
 	return (0);
 }
@@ -60,7 +61,8 @@ static	int		sw_rotate(t_stacks *stacks, char *cmd, char *para)
 		ch_rotate(stacks, "ch_rb");
 		sw_add_cmd(stacks, cmd, "rr");
 	}
-	else
+	else if (!((ft_strcmp(para, "sw_ra") == 0 && stacks->len_a < 2)
+			|| (ft_strcmp(para, "sw_rb") == 0 && stacks->len_b < 2)))
 		return (ft_msg_int(2, "Invalid instruction un sw_rotate\n", -1));
 	return (0);
 }

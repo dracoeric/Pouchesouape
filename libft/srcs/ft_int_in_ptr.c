@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_made_of_str.c                               :+:      :+:    :+:   */
+/*   ft_int_in_ptr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/09 12:55:32 by erli              #+#    #+#             */
-/*   Updated: 2019/01/09 13:46:23 by erli             ###   ########.fr       */
+/*   Created: 2019/01/09 16:50:37 by erli              #+#    #+#             */
+/*   Updated: 2019/01/09 16:51:45 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_str_made_of_str(char *str, char *base)
+int		ft_int_in_ptr(int a, int *tab, size_t len)
 {
-	int i;
+	size_t i;
 
 	i = 0;
-	if (str == 0 || base == 0)
-		return (0);
-	while (str[i] != '\0')
+	while (i < len)
 	{
-		if (ft_char_in_str(str[i], base) == 0)
-			return (0);
+		if (a == tab[i])
+			return (1);
 		i++;
 	}
-	return (1);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:55:26 by erli              #+#    #+#             */
-/*   Updated: 2019/01/09 19:37:50 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/10 11:38:13 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static	int		get_options(char *str, int options)
 	{
 		if (str[i] == 'v' && options % 10 == 0)
 			options += 1;
-		if (str[i] == 'v' && (options / 10) % 10 == 0)
+		if (str[i] == 't' && (options / 10) % 10 == 0)
 			options += 10;
 		if (str[i] == 'f' && (options / 100) == 0)
 			options += 100;
@@ -43,7 +43,7 @@ static	void	check_stacks(t_stacks *stacks)
 		write(1, "OK\n", 3);
 	else
 	{
-		while (i + i < stacks->len)
+		while (i + 1 < stacks->len)
 		{
 			if ((stacks->a)[i] > (stacks->a)[i + 1])
 			{
@@ -65,12 +65,11 @@ static	void	do_orders(t_stacks *stacks, char *path)
 	fd = (stacks->options / 100 == 1 ? open(path, O_RDONLY) : 0);
 	if (fd < 0)
 	{
-		write(2, "Error\n", 6);
+		write(2, "Error wrong file\n", 17);
 		exit(0);
 	}
 	while ((ret = ps_next_line(fd, &order)) == 1)
 	{
-		ft_printf("order = %s", order);
 		ch_manage_order(stacks, order);
 		free(order);
 	}
@@ -88,7 +87,7 @@ static	int		init_stacks(int argc, char **argv, int len, int options)
 	stacks->a = taba;
 	stacks->b = tabb;
 	stacks->options = options;
-	ps_arg_add(stacks, argc - (options / 100), argv + (options / 100));
+	ps_arg_add(stacks, argc, argv + (options / 100));
 	do_orders(stacks, argv[1]);
 	check_stacks(stacks);
 	free(stacks);
@@ -115,8 +114,10 @@ int				main(int argc, char **argv)
 		else
 			loop = 0;
 	}
-	if (argc == i || !(len = ps_arg_verif(argc + 1 - i, argv + 1 - i)))
-		return (ft_msg_int(2, "Error\n", 6));
-	init_stacks(argc + 1 - i, argv + i - i, len, options);
+	argc += 1 - i - (options / 100);
+	argv = argv + i - 1;
+	if (argc == 1 || !(len = ps_arg_verif(argc, argv + (options / 100))))
+		return (ft_msg_int(2, "Error wrong arguments\n", 0));
+	init_stacks(argc, argv, len, options);
 	return (0);
 }
