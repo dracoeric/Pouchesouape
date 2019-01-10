@@ -6,7 +6,7 @@
 #    By: erli <erli@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/08 14:34:35 by erli              #+#    #+#              #
-#    Updated: 2019/01/10 17:16:03 by erli             ###   ########.fr        #
+#    Updated: 2019/01/10 18:28:05 by erli             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -19,7 +19,10 @@ OBJSDIR		=		./objs
 SRCS1		=		main_checker.c			ps_swap.c				ps_move.c		\
 					ps_push.c				ps_rotate.c				ps_revrotate.c	\
 					ps_arg_verif.c			ps_arg_add.c			ps_next_line.c	\
-					ch_manage_order.c		sw_add_cmd.c
+					ch_manage_order.c		ch_init_visu.c			ch_do_orders.c	\
+					ch_win_close.c			ch_key_press.c			ch_draw_step.c	\
+					sw_add_cmd.c													\
+					mlx_img_create.c
 
 SRCS2		=		main_push_swap.c		ps_swap.c				ps_move.c		\
 					ps_push.c				ps_rotate.c				ps_revrotate.c	\

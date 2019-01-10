@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:55:26 by erli              #+#    #+#             */
-/*   Updated: 2019/01/10 11:38:13 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/10 18:11:29 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "push_swap.h"
 #include <stdlib.h>
 #include <unistd.h>
-#include <fcntl.h>
 
 static	int		get_options(char *str, int options)
 {
@@ -56,25 +55,6 @@ static	void	check_stacks(t_stacks *stacks)
 	}
 }
 
-static	void	do_orders(t_stacks *stacks, char *path)
-{
-	int		fd;
-	char	*order;
-	int		ret;
-
-	fd = (stacks->options / 100 == 1 ? open(path, O_RDONLY) : 0);
-	if (fd < 0)
-	{
-		write(2, "Error wrong file\n", 17);
-		exit(0);
-	}
-	while ((ret = ps_next_line(fd, &order)) == 1)
-	{
-		ch_manage_order(stacks, order);
-		free(order);
-	}
-}
-
 static	int		init_stacks(int argc, char **argv, int len, int options)
 {
 	int			taba[len];
@@ -88,7 +68,8 @@ static	int		init_stacks(int argc, char **argv, int len, int options)
 	stacks->b = tabb;
 	stacks->options = options;
 	ps_arg_add(stacks, argc, argv + (options / 100));
-	do_orders(stacks, argv[1]);
+	ch_init_visu(stacks);
+	ch_do_orders(stacks, argv[1]);
 	check_stacks(stacks);
 	free(stacks);
 	return (0);
