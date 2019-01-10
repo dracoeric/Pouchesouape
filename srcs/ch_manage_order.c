@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 19:06:15 by erli              #+#    #+#             */
-/*   Updated: 2019/01/10 12:03:43 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/10 14:46:31 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int					ch_manage_order(t_stacks *stacks, char *order)
 	if (stacks == 0 || order == 0)
 		return (ft_msg_int(2, "Stacks or order is NULL in man_order\n", -1));
 	strlen = ft_strlen(order);
-	if (order[strlen - 1] != '\n' || ft_char_in_str(order[0], "spr") == 0)
+	if (strlen > 4 || order[strlen - 1] != '\n'
+		|| ft_char_in_str(order[0], "spr") == 0)
 	{
 		write(2, "Error in man\n", 13);
 		exit(0);

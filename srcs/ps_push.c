@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 09:46:01 by erli              #+#    #+#             */
-/*   Updated: 2019/01/10 11:55:22 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/10 14:53:22 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,18 @@ static	int		ch_push(t_stacks *stacks, char *para)
 	{
 		tmp = (stacks->b)[0];
 		ps_move(stacks, "up", 2);
+		stacks->len_a += 1;
 		ps_move(stacks, "down", 1);
 		(stacks->a)[0] = tmp;
-		stacks->len_a += 1;
 	}
 	else if (ft_strcmp(para, "ch_pb") == 0 && stacks->len_a > 0)
 	{
 		tmp = (stacks->a)[0];
 		ps_move(stacks, "up", 1);
-		ps_move(stacks, "down", 2);
-		(stacks->b)[0] = tmp;
 		stacks->len_b += 1;
+		ps_move(stacks, "down", 2);
+		ft_printf("tabklsjdfh : %4td\n", stacks->b, stacks->len_b);
+		(stacks->b)[0] = tmp;
 	}
 	else if (!((ft_strcmp(para, "ch_pa") == 0 && stacks->len_a == 0)
 			|| (ft_strcmp(para, "ch_pb") == 0 && stacks->len_b == 0)))
