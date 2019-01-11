@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:55:26 by erli              #+#    #+#             */
-/*   Updated: 2019/01/10 18:11:29 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/11 19:19:41 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,28 +33,6 @@ static	int		get_options(char *str, int options)
 	return (options);
 }
 
-static	void	check_stacks(t_stacks *stacks)
-{
-	int i;
-
-	i = 0;
-	if (stacks->len == 1)
-		write(1, "OK\n", 3);
-	else
-	{
-		while (i + 1 < stacks->len)
-		{
-			if ((stacks->a)[i] > (stacks->a)[i + 1])
-			{
-				write(1, "KO\n", 3);
-				exit(0);
-			}
-			i++;
-		}
-		write(1, "OK\n", 3);
-	}
-}
-
 static	int		init_stacks(int argc, char **argv, int len, int options)
 {
 	int			taba[len];
@@ -66,11 +44,14 @@ static	int		init_stacks(int argc, char **argv, int len, int options)
 	stacks->len = len;
 	stacks->a = taba;
 	stacks->b = tabb;
+	stacks->min = 2147483647;
+	stacks->max = -2147483648;
+	stacks->back_in_time = -1;
 	stacks->options = options;
 	ps_arg_add(stacks, argc, argv + (options / 100));
 	ch_init_visu(stacks);
 	ch_do_orders(stacks, argv[1]);
-	check_stacks(stacks);
+	ch_check_stacks(stacks);
 	free(stacks);
 	return (0);
 }

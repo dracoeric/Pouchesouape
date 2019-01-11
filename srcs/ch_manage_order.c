@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 19:06:15 by erli              #+#    #+#             */
-/*   Updated: 2019/01/10 14:46:31 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/11 19:09:41 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #include "libft.h"
 #include <stdlib.h>
 #include <unistd.h>
+
+
+
 
 int					ch_manage_order(t_stacks *stacks, char *order)
 {
@@ -25,10 +28,7 @@ int					ch_manage_order(t_stacks *stacks, char *order)
 	strlen = ft_strlen(order);
 	if (strlen > 4 || order[strlen - 1] != '\n'
 		|| ft_char_in_str(order[0], "spr") == 0)
-	{
-		write(2, "Error in man\n", 13);
-		exit(0);
-	}
+		exit(ft_msg_int(2, "Error in manage\n", 0));
 	ft_strcpy(para, "ch_");
 	*ft_strchr(order, 10) = '\0';
 	ft_strncpy(para + 3, order, strlen);
@@ -42,6 +42,5 @@ int					ch_manage_order(t_stacks *stacks, char *order)
 		ps_revrotate(stacks, NULL, para);
 	else
 		exit(ft_msg_int(2, "Error in mana\n", 14));
-	ft_printf("order = %s\n, a = %4td\n, b = %4td\n", order, stacks->a, stacks->len_a, stacks->b, stacks->len_b);
 	return (0);
 }

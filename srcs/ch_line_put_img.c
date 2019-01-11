@@ -6,7 +6,7 @@
 /*   By: erli <erli@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 16:33:10 by erli              #+#    #+#             */
-/*   Updated: 2019/01/11 18:56:13 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/11 12:15:58 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static	void	draw_line_case2(t_img *img, t_pixcoord *a,
 	}
 }
 
-void			mlx_line_put_img(t_img *img, t_pixcoord *a,
+void			ch_line_put_img(t_img *img, t_pixcoord *a,
 			t_pixcoord *b, t_colour (*f)(int))
 {
 	int	y_diff;
