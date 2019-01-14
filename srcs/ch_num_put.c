@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 14:26:06 by erli              #+#    #+#             */
-/*   Updated: 2019/01/11 18:32:18 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/14 10:18:50 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ch_num_put(t_stacks *stacks, t_pixcoord pixl,
 					t_pixcoord pixr, int mode)
 {
 	t_pixcoord pix;
-
 
 	pixl.pz = mode;
 	pix.pz = mode;

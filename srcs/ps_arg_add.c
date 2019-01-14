@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 12:48:13 by erli              #+#    #+#             */
-/*   Updated: 2019/01/11 18:52:10 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/14 10:22:27 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 static	void	add_int_in_stacks(t_stacks *stacks, int nb, int *len)
 {
-
 	if (ft_int_in_ptr(nb, stacks->a, *len) == 1)
 	{
 		write(2, "Error\n", 6);

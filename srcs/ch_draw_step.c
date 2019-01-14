@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:23:58 by erli              #+#    #+#             */
-/*   Updated: 2019/01/11 18:36:46 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/14 10:18:22 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static	void	draw_stacka(t_stacks *stacks)
 		py = pix_bot_right.py;
 		i++;
 	}
-
 }
 
 static	void	draw_stackb(t_stacks *stacks)

@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 19:06:15 by erli              #+#    #+#             */
-/*   Updated: 2019/01/11 19:09:41 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/14 10:13:32 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 #include "libft.h"
 #include <stdlib.h>
 #include <unistd.h>
-
-
-
 
 int					ch_manage_order(t_stacks *stacks, char *order)
 {

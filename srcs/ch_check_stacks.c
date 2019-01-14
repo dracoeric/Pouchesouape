@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 19:14:36 by erli              #+#    #+#             */
-/*   Updated: 2019/01/11 19:16:17 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/14 10:21:43 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-void	ch_check_stacks(t_stacks *stacks)
+int		ch_check_stacks(t_stacks *stacks)
 {
 	int i;
 
@@ -34,4 +34,5 @@ void	ch_check_stacks(t_stacks *stacks)
 		}
 		write(1, "OK\n", 3);
 	}
+	return (0);
 }
