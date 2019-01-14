@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 09:46:01 by erli              #+#    #+#             */
-/*   Updated: 2019/01/10 15:00:09 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/14 10:29:38 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static	int		ch_push(t_stacks *stacks, char *para)
 		ps_move(stacks, "down", 2);
 		(stacks->b)[0] = tmp;
 	}
-	else if (!((ft_strcmp(para, "ch_pa") == 0 && stacks->len_a == 0)
-			|| (ft_strcmp(para, "ch_pb") == 0 && stacks->len_b == 0)))
+	else if (!((ft_strcmp(para, "ch_pb") == 0 && stacks->len_a == 0)
+			|| (ft_strcmp(para, "ch_pa") == 0 && stacks->len_b == 0)))
 		return (ft_msg_int(2, "Invalid instruction un ch_push\n", -1));
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 14:26:06 by erli              #+#    #+#             */
-/*   Updated: 2019/01/14 10:18:50 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/14 15:48:26 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ch_num_put(t_stacks *stacks, t_pixcoord pixl,
 	while (pixl.py < pixr.py)
 	{
 		pix.py = pixl.py;
-		if (pixl.pz == 1 || pixl.pz == 3)
+		if (pixl.pz % 2 == 1)
 			mlx_line_put_img(stacks->imga, &pixl, &pix, &ch_colour_nb);
 		else
 			mlx_line_put_img(stacks->imgb, &pixl, &pix, &ch_colour_nb);

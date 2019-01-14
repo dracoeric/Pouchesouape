@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 09:47:50 by erli              #+#    #+#             */
-/*   Updated: 2019/01/14 10:22:10 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/14 15:04:53 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static	void	ch_manage_old_order(t_stacks *stacks, char *order)
 		stacks->order_buf[0] = 11;
 }
 
-static	char	*ch_get_old_order(t_stacks *stacks, char *order)
+static	char	*ch_get_old_order(t_stacks *stacks, char *order, int dir)
 {
 	if (stacks->order_buf[stacks->back_in_time] == 1)
 		ft_strcpy(order, "sa\n");
@@ -52,23 +52,34 @@ static	char	*ch_get_old_order(t_stacks *stacks, char *order)
 	if (stacks->order_buf[stacks->back_in_time] == 3)
 		ft_strcpy(order, "ss\n");
 	if (stacks->order_buf[stacks->back_in_time] == 4)
-		ft_strcpy(order, "pa\n");
+		ft_strcpy(order, (dir == 0 ? "pa\n" : "pb\n"));
 	if (stacks->order_buf[stacks->back_in_time] == 5)
-		ft_strcpy(order, "pb\n");
+		ft_strcpy(order, (dir == 0 ? "pb\n" : "pa\n"));
 	if (stacks->order_buf[stacks->back_in_time] == 6)
-		ft_strcpy(order, "ra\n");
+		ft_strcpy(order, (dir == 0 ? "ra\n" : "rra\n"));
 	if (stacks->order_buf[stacks->back_in_time] == 7)
-		ft_strcpy(order, "rb\n");
+		ft_strcpy(order, (dir == 0 ? "rb\n" : "rrb\n"));
 	if (stacks->order_buf[stacks->back_in_time] == 8)
-		ft_strcpy(order, "rr\n");
+		ft_strcpy(order, (dir == 0 ? "rr\n" : "rrr\n"));
 	if (stacks->order_buf[stacks->back_in_time] == 9)
-		ft_strcpy(order, "rra\n");
+		ft_strcpy(order, (dir == 0 ? "rra\n" : "ra\n"));
 	if (stacks->order_buf[stacks->back_in_time] == 10)
-		ft_strcpy(order, "rra\n");
+		ft_strcpy(order, (dir == 0 ? "rrb\n" : "rb\n"));
 	if (stacks->order_buf[stacks->back_in_time] == 11)
-		ft_strcpy(order, "rrr\n");
-	(stacks->back_in_time)--;
+		ft_strcpy(order, (dir == 0 ? "rrr\n" : "rr\n"));
+	if (stacks->order_buf[stacks->back_in_time] == 0)
+		(stacks->back_in_time)--;
 	return (order);
+}
+
+static	void	ch_draw_order(t_stacks *stacks, char *order)
+{
+	ch_manage_order(stacks, order);
+	if (stacks->options % 100 == 11)
+		ch_draw_step(stacks, order, 2);
+	else
+		ch_draw_step(stacks, order, 0);
+	free(order);
 }
 
 int				ch_loop_do_orders(void *arg)
@@ -83,17 +94,15 @@ int				ch_loop_do_orders(void *arg)
 	stacks = (t_stacks *)arg;
 	ft_bzero(old_order, 10);
 	if (stacks->back_in_time != -1)
-		order = ft_strdup(ch_get_old_order(stacks, old_order));
+		order = ft_strdup(ch_get_old_order(stacks, old_order,
+				stacks->forward_backward));
 	else if ((ret = ps_next_line(stacks->fd, &order)) == 0)
-		exit(ch_check_stacks(stacks));
+		return (ch_check_stacks(stacks));
+	if (order[0] == '\0')
+		return (0);
 	ch_manage_old_order(stacks, order);
-	if (stacks->options % 100 == 11)
-		ch_draw_step(stacks, order, 1);
-	ch_manage_order(stacks, order);
-	if (stacks->options % 100 == 11)
-		ch_draw_step(stacks, order, 2);
-	else if (stacks->options % 10 == 1)
-		ch_draw_step(stacks, order, 0);
-	free(order);
+	if (stacks->back_in_time > -1 && stacks->forward_backward == 0)
+		(stacks->back_in_time)--;
+	ch_draw_order(stacks, order);
 	return (0);
 }

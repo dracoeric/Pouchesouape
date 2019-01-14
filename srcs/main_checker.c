@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:55:26 by erli              #+#    #+#             */
-/*   Updated: 2019/01/11 19:19:41 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/14 15:07:49 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static	int		get_options(char *str, int options)
 	{
 		if (str[i] == 'v' && options % 10 == 0)
 			options += 1;
-		if (str[i] == 't' && (options / 10) % 10 == 0)
+		if (str[i] == 'c' && options % 100 == 1)
 			options += 10;
 		if (str[i] == 'f' && (options / 100) == 0)
 			options += 100;
@@ -47,6 +47,7 @@ static	int		init_stacks(int argc, char **argv, int len, int options)
 	stacks->min = 2147483647;
 	stacks->max = -2147483648;
 	stacks->back_in_time = -1;
+	stacks->forward_backward = 0;
 	stacks->options = options;
 	ps_arg_add(stacks, argc, argv + (options / 100));
 	ch_init_visu(stacks);
@@ -68,7 +69,7 @@ int				main(int argc, char **argv)
 	options = 0;
 	while (i < argc && argv[i][0] == '-' && loop == 1)
 	{
-		if (ft_str_made_of_str(argv[i], "-vtf") == 1)
+		if (ft_str_made_of_str(argv[i], "-vcf") == 1)
 		{
 			options = get_options(argv[i], options);
 			i++;

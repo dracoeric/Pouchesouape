@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:23:58 by erli              #+#    #+#             */
-/*   Updated: 2019/01/14 10:18:22 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/14 15:47:58 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "mlxadd.h"
 #include "libft.h"
 #include <stdlib.h>
+#include <unistd.h>
 
 static	void	draw_stacka(t_stacks *stacks)
 {
@@ -59,22 +60,17 @@ void			ch_draw_step(t_stacks *stacks, char *order, int mode)
 {
 	if (stacks == 0 || order == 0)
 		exit(ft_msg_int(2, "Stacks or order is null in draw_Step\n", 0));
-	if (stacks->options / 10 % 10 == 1 && mode == 1)
-		ch_hl_before_step(stacks, order);
-	else if (stacks->options / 10 % 10 == 1 && mode == 2)
-		ch_hl_after_step(stacks, order);
-	else
-	{
-		ft_bzero(stacks->imga->str, stacks->imga->nb_line
+	ft_bzero(stacks->imga->str, stacks->imga->nb_line
 			* stacks->imga->size_line);
-		ft_bzero(stacks->imgb->str, stacks->imgb->nb_line
+	ft_bzero(stacks->imgb->str, stacks->imgb->nb_line
 			* stacks->imgb->size_line);
-		draw_stacka(stacks);
-		draw_stackb(stacks);
-	}
+	draw_stacka(stacks);
+	draw_stackb(stacks);
+	if (stacks->options % 100 == 11 && mode == 2)
+		ch_hl_after_step(stacks, order);
 	mlx_put_image_to_window(stacks->mlx_ptr, stacks->win_ptr, stacks->imga->ptr,
-		0, 0);
+							0, 0);
 	mlx_put_image_to_window(stacks->mlx_ptr, stacks->win_ptr, stacks->imgb->ptr,
-		W_WIDTH / 2, 0);
+							W_WIDTH / 2, 0);
 	return ;
 }

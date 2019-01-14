@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 19:14:36 by erli              #+#    #+#             */
-/*   Updated: 2019/01/14 10:21:43 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/14 11:53:30 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		ch_check_stacks(t_stacks *stacks)
 			if ((stacks->a)[i] > (stacks->a)[i + 1])
 			{
 				write(1, "KO\n", 3);
-				exit(0);
+				return (0);
 			}
 			i++;
 		}
