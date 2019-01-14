@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:56:47 by erli              #+#    #+#             */
-/*   Updated: 2019/01/14 15:46:48 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/14 16:42:18 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void			ch_num_put(t_stacks *stacks, t_pixcoord pixl,
 int				ch_loop_do_orders(void *arg);
 void			ch_hl_after_step(t_stacks *stacks, char *order);
 void			sw_add_cmd(t_stacks *stacks, char *cmd, char *para);
-
+void			sw_sort_stacks(t_stacks *stacks);
+int				sw_check_stacks(t_stacks *stacks);
 int				loop_do_orders(void *arg);
 #endif
