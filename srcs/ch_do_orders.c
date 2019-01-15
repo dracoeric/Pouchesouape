@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 17:53:17 by erli              #+#    #+#             */
-/*   Updated: 2019/01/14 10:14:09 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/15 13:25:04 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,8 @@ static	void		ch_do_orders_no_visu(t_stacks *stacks, char *path)
 	stacks->fd = fd;
 	while ((ret = ps_next_line(stacks->fd, &order)) == 1)
 	{
-		if (stacks->options % 100 == 11)
-			ch_draw_step(stacks, order, 1);
 		ch_manage_order(stacks, order);
-		if (stacks->options % 100 == 11)
-			ch_draw_step(stacks, order, 2);
-		else if (stacks->options % 10 == 1)
-			ch_draw_step(stacks, order, 0);
 		free(order);
-		return ;
 	}
 	return ;
 }
