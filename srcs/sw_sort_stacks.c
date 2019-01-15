@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 16:36:42 by erli              #+#    #+#             */
-/*   Updated: 2019/01/14 19:09:01 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/15 17:25:08 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,7 @@ void			sw_sort_stacks(t_stacks *stacks)
 		exit(0);
 	if (stacks->len <= 5)
 		sw_small_sort(stacks);
+	else
+		sw_median_sort(stacks);
 	exit(0);
 }
