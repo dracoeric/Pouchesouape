@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 11:08:07 by erli              #+#    #+#             */
-/*   Updated: 2019/01/09 16:54:15 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/15 12:33:42 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,25 @@ typedef struct	s_conv
 }				t_conv;
 
 int				ft_atoi(const char *str);
+void			ft_free_mat_int(int **mat, int i);
+int				ft_int_in_ptr(int a, int *tab, size_t len);
+void			ft_merge_sort_tab(int *src, int *dest, size_t len);
+void			ft_swap_int(int *a, int *b);
+
 int				ft_char_at_pos(char c, char *str);
 int				ft_char_in_str(char c, char *str);
-int				ft_int_in_ptr(int a, int *tab, size_t len);
-int				ft_str_made_of_str(char *str, char *base);
-int				ft_msg_int(int fd, char *msg, int ret);
-void			*ft_msg_ptr(int fd, char *msg, void *ptr);
-void			ft_free_mat_int(int **mat, int i);
 void			ft_free_mat_char(char **mat, int i);
-int				ft_tolower(int c);
-int				ft_toupper(int c);
 char			*ft_itoa(int nb);
 char			*ft_dtoa(double nb, int precision);
 char			*ft_ldtoa(long double nb, int precision);
+int				ft_str_made_of_str(char *str, char *base);
+int				ft_tolower(int c);
+int				ft_toupper(int c);
+
 int				get_next_line(int fd, char **line);
+
+int				ft_msg_int(int fd, char *msg, int ret);
+void			*ft_msg_ptr(int fd, char *msg, void *ptr);
 
 int				ft_isalnum(int c);
 int				ft_isalpha(int c);
