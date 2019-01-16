@@ -6,13 +6,11 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 19:14:18 by erli              #+#    #+#             */
-/*   Updated: 2019/01/16 12:33:33 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 15:45:37 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-void	ft_swap_int(int *a, int *b);
 
 static	void	ft_sort_tab_3(int *tab)
 {
@@ -40,7 +38,7 @@ static	void	ft_sort_tab_3(int *tab)
 	}
 }
 
-static	int		*ft_small_sort(int* tab, int len)
+static	int		*ft_small_sort(int *tab, int len)
 {
 	if (len == 1)
 		return (tab);
@@ -72,7 +70,7 @@ static	int		*ft_merge(int *tab1, int len1, int *tab2, int len2)
 	i1 = 0;
 	i2 = 0;
 	while (i < len1 + len2)
-	{			
+	{
 		if (i1 == len1)
 			tab1[i++] = tab2[i2++];
 		else if ((i2 == len2) || (tab3[i1] <= tab2[i2]))
@@ -90,7 +88,7 @@ static	int		*ft_merge_sort(int *tab, int len)
 	int len1;
 	int len2;
 
-	if (len <= 3) 
+	if (len <= 3)
 		return (ft_small_sort(tab, len));
 	len1 = len / 2;
 	len2 = len - len1;
@@ -102,7 +100,6 @@ static	int		*ft_merge_sort(int *tab, int len)
 void			ft_merge_sort_tab(int *src, int *dest, size_t len)
 {
 	int *tab;
-
 
 	if (len == 0)
 		return ;

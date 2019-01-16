@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 09:46:01 by erli              #+#    #+#             */
-/*   Updated: 2019/01/16 12:53:22 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 15:17:16 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,13 @@ static	int		sw_rotate(t_stacks *stacks, char *cmd, char *para)
 	{
 		ch_rotate(stacks, "ch_ra");
 		sw_add_cmd(stacks, cmd, "ra");
-		stacks->a_rotated += 1;
+		stacks->rotated += 1;
 	}
 	else if (ft_strcmp(para, "sw_rb") == 0 && stacks->len_b >= 2)
 	{
 		ch_rotate(stacks, "ch_rb");
 		sw_add_cmd(stacks, cmd, "rb");
+		stacks->rotated += 1;
 	}
 	else if (ft_strcmp(para, "sw_rr") == 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 17:25:32 by erli              #+#    #+#             */
-/*   Updated: 2019/01/16 14:30:28 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 15:36:22 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static	void	sw_median_sort_fill_b(t_stacks *stacks, char *cmd)
 		len = stacks->len_a - stacks->n_sorted;
 		if (len < 4)
 			sw_fill_3(stacks, cmd, &len);
-		stacks->a_rotated = 0;
+		stacks->rotated = 0;
 		med = sw_find_median(stacks->a, len);
 		stacks->median_cut[stacks->len_med] = 0;
 		while (stacks->median_cut[stacks->len_med] < (len / 2))
@@ -60,14 +60,24 @@ static	void	sw_median_sort_fill_b(t_stacks *stacks, char *cmd)
 				ps_rotate(stacks, cmd, "sw_ra");
 		}
 		stacks->len_med = (len >= 4 ? (stacks->len_med) + 1 : stacks->len_med);
-		while (stacks->a_rotated > 0 && stacks->n_sorted > 0)
+		while (stacks->rotated > 0 && stacks->n_sorted > 0)
 			ps_revrotate(stacks, cmd, "sw_rra");
 	}
 }
 
 static	void	sw_unload_3(t_stacks *stacks, char *cmd)
 {
-	if (stacks->b[0] < stacks->b[1] && stacks->b[1] < stacks->b[2])
+	if (stacks->median_cut[stacks->len_med - 1] == 2)
+	{
+		if (stacks->b[0] < stacks->b[1])
+			ps_swap(stacks, cmd, "sw_sb");
+		sw_chain_cmd(stacks, cmd, "44");
+		stacks->n_sorted += 2;
+		stacks->len_med -= 1;
+		stacks->median_cut[stacks->len_med] = 0;
+		return ;
+	}
+	else if (stacks->b[0] < stacks->b[1] && stacks->b[1] < stacks->b[2])
 		sw_chain_cmd(stacks, cmd, "242414");
 	else if (stacks->b[0] < stacks->b[2] && stacks->b[2] < stacks->b[1])
 		sw_chain_cmd(stacks, cmd, "744a4");
@@ -86,28 +96,30 @@ static	void	sw_unload_3(t_stacks *stacks, char *cmd)
 
 static	void	sw_median_sort_unload_b(t_stacks *stacks, char *cmd)
 {
+	int len;
+	int med;
+
 	if (stacks->len_med == 0)
 		return ;
-	if (stacks->median_cut[stacks->len_med - 1] == 2)
-	{
-		if (stacks->b[0] < stacks->b[1])
-			ps_swap(stacks, cmd, "sw_sb");
-		ps_push(stacks, cmd, "sw_pa");
-		ps_push(stacks, cmd, "sw_pa");
-		stacks->n_sorted += 2;
-		stacks->len_med -= 1;
-		stacks->median_cut[stacks->len_med] = 0;
-	}
-	else if (stacks->median_cut[stacks->len_med - 1] == 3)
+	if (stacks->median_cut[stacks->len_med - 1] <= 3)
 		sw_unload_3(stacks, cmd);
 	else
 	{
-		while (stacks->median_cut[stacks->len_med - 1] > 0)
+		len = stacks->median_cut[stacks->len_med - 1];
+		stacks->rotated = 0;
+		med = sw_find_median(stacks->b, len);
+		while (stacks->median_cut[stacks->len_med - 1] > (len / 2))
 		{
-			ps_push(stacks, cmd, "sw_pa");
-			stacks->median_cut[stacks->len_med - 1] -= 1;
+			if (stacks->b[0] >= med)
+			{
+				ps_push(stacks, cmd, "sw_pa");
+				stacks->median_cut[stacks->len_med - 1] -= 1;
+			}
+			else
+				ps_rotate(stacks, cmd, "sw_rb");
 		}
-		stacks->len_med -= 1;
+		while (stacks->rotated > 0 && stacks->n_sorted > 0)
+			ps_revrotate(stacks, cmd, "sw_rrb");
 	}
 }
 
