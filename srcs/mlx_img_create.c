@@ -6,7 +6,7 @@
 /*   By: erli <erli@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 10:02:38 by erli              #+#    #+#             */
-/*   Updated: 2018/12/11 16:35:19 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 17:20:26 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 t_img	*mlx_img_create(void *mlx_ptr, int width, int height)
 {
 	t_img *img;
-
-	if (mlx_ptr == 0 || !(img = (t_img *)malloc(sizeof(t_img))))
+	
+	if (!(img = (t_img *)malloc(sizeof(t_img))))
 		return (0);
 	img->ptr = mlx_new_image(mlx_ptr, width, height);
 	if (img->ptr == 0)

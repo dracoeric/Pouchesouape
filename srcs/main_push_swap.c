@@ -6,13 +6,12 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:55:26 by erli              #+#    #+#             */
-/*   Updated: 2019/01/16 11:23:08 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 17:25:04 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
-#include <stdlib.h>
 #include <fcntl.h>
 
 static	int		get_options(char *str, int options)
@@ -33,10 +32,8 @@ static	int		init_stacks(int argc, char **argv, int len, int options)
 {
 	int			taba[len];
 	int			tabb[len];
-	t_stacks	*stacks;
+	t_stacks	stacks[1];
 
-	if (!(stacks = (t_stacks *)malloc(sizeof(t_stacks))))
-		return (ft_msg_int(2, "Malloc Error\n", -1));
 	stacks->len = len;
 	stacks->a = taba;
 	stacks->b = tabb;
@@ -52,7 +49,6 @@ static	int		init_stacks(int argc, char **argv, int len, int options)
 	}
 	ps_arg_add(stacks, argc, argv + (options / 100));
 	sw_sort_stacks(stacks);
-	free(stacks);
 	return (0);
 }
 
