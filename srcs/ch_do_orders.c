@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 17:53:17 by erli              #+#    #+#             */
-/*   Updated: 2019/01/15 13:25:04 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 14:47:40 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static	void		ch_do_orders_visu(t_stacks *stacks, char *path)
 		exit(ft_msg_int(2, "Error wrong file\n", 0));
 	stacks->fd = fd;
 	ch_draw_step(stacks, "init", 0);
+	mlx_loop_hook(stacks->mlx_ptr, &ch_autoplay, stacks);
 	mlx_hook(stacks->win_ptr, 17, (1L << 17), &ch_win_close, stacks);
 	mlx_hook(stacks->win_ptr, 2, (1L << 0), &ch_key_press, stacks);
 	mlx_loop(stacks->mlx_ptr);

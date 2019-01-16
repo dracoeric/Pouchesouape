@@ -6,7 +6,7 @@
 /*   By: erli <erli@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 11:44:00 by erli              #+#    #+#             */
-/*   Updated: 2019/01/14 11:56:56 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 15:02:50 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 
 static	void	go_forward(t_stacks *stacks)
 {
+	stacks->auto_play = 0;
 	stacks->forward_backward = 0;
 	ch_loop_do_orders(stacks);
 }
 
 static	void	go_backward(t_stacks *stacks)
 {
+	stacks->auto_play = 0;
 	if (stacks->back_in_time < 99)
 	{
 		stacks->forward_backward = -1;
@@ -36,6 +38,8 @@ int				ch_key_press(int key, void *arg)
 	if (arg == 0)
 		return (0);
 	stacks = (t_stacks *)arg;
+	if (key == 9)
+		stacks->auto_play = 1;
 	if (key == 11)
 		go_backward(stacks);
 	if (key == 49)

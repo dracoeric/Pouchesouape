@@ -6,7 +6,7 @@
 #    By: erli <erli@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/08 14:34:35 by erli              #+#    #+#              #
-#    Updated: 2019/01/16 09:50:12 by erli             ###   ########.fr        #
+#    Updated: 2019/01/16 14:50:45 by erli             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -21,11 +21,11 @@ SRCS1		=		main_checker.c			ps_swap.c				ps_move.c		\
 					ps_arg_verif.c			ps_arg_add.c			ps_next_line.c	\
 					ch_manage_order.c		ch_init_visu.c			ch_do_orders.c	\
 					ch_win_close.c			ch_key_press.c			ch_draw_step.c	\
-					ch_hl_after_step.c		ch_colour_nb.c	\
+					ch_hl_after_step.c		ch_colour_nb.c			ch_autoplay.c	\
 					ch_find_px.c			ch_num_put.c			sw_add_cmd.c	\
-					ch_check_stacks.c		ch_loop_do_orders.c		\
-							\
-					mlx_img_create.c		mlx_line_put_img.c					\
+					ch_check_stacks.c		ch_loop_do_orders.c						\
+																					\
+					mlx_img_create.c		mlx_line_put_img.c						\
 					mlx_str_to_colour.c		mlx_pixel_put_img.c
 
 SRCS2		=		main_push_swap.c		ps_swap.c				ps_move.c		\
@@ -33,8 +33,7 @@ SRCS2		=		main_push_swap.c		ps_swap.c				ps_move.c		\
 					ps_arg_verif.c			ps_arg_add.c			ps_next_line.c	\
 					sw_add_cmd.c			sw_sort_stacks.c		sw_small_sort.c	\
 					sw_find_median.c		sw_median_sort.c		sw_chain_cmd.c\
-					sw_check_stacks.c 
-					
+					sw_check_stacks.c
 
 OBJS1		=		$(addprefix $(OBJSDIR)/, $(SRCS1:.c=.o))
 OBJS2		=		$(addprefix $(OBJSDIR)/, $(SRCS2:.c=.o))
