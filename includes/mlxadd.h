@@ -6,7 +6,7 @@
 /*   By: erli <erli@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 11:56:03 by erli              #+#    #+#             */
-/*   Updated: 2018/12/04 14:00:22 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 17:29:39 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ typedef	struct			s_mlxwin_ptr
 	void	*win_ptr;
 }						t_mlxwin_ptr;
 
-t_img					*mlx_img_create(void *mlx_ptr, int width, int height);
+t_img					*mlx_img_create(void *mlx_ptr, t_img *img, int width,
+							int height);
 void					mlx_pixel_put_img(t_img *img, int x, int y,
 							t_colour colour);
 void					mlx_line_put(t_mlxwin_ptr *mlxwin, t_pixcoord *q,
