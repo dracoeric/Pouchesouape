@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 18:23:58 by erli              #+#    #+#             */
-/*   Updated: 2019/01/14 15:47:58 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 16:07:28 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "mlxadd.h"
 #include "libft.h"
 #include <stdlib.h>
-#include <unistd.h>
 
 static	void	draw_stacka(t_stacks *stacks)
 {

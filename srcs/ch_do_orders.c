@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 17:53:17 by erli              #+#    #+#             */
-/*   Updated: 2019/01/16 14:47:40 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 16:06:13 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "libft.h"
 #include "mlxadd.h"
 #include <fcntl.h>
-#include <unistd.h>
 #include <stdlib.h>
 
 static	void		ch_do_orders_visu(t_stacks *stacks, char *path)
@@ -23,7 +22,7 @@ static	void		ch_do_orders_visu(t_stacks *stacks, char *path)
 
 	fd = (stacks->options / 100 == 1 ? open(path, O_RDONLY) : 0);
 	if (fd < 0)
-		exit(ft_msg_int(2, "Error wrong file\n", 0));
+		exit(ft_msg_int(2, "Error\n", 0));
 	stacks->fd = fd;
 	ch_draw_step(stacks, "init", 0);
 	mlx_loop_hook(stacks->mlx_ptr, &ch_autoplay, stacks);
@@ -40,7 +39,7 @@ static	void		ch_do_orders_no_visu(t_stacks *stacks, char *path)
 
 	fd = (stacks->options / 100 == 1 ? open(path, O_RDONLY) : 0);
 	if (fd < 0)
-		exit(ft_msg_int(2, "Error wrong file\n", 0));
+		exit(ft_msg_int(2, "Error\n", 0));
 	stacks->fd = fd;
 	while ((ret = ps_next_line(stacks->fd, &order)) == 1)
 	{

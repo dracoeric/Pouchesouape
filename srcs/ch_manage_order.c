@@ -6,14 +6,13 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 19:06:15 by erli              #+#    #+#             */
-/*   Updated: 2019/01/14 10:13:32 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 16:07:59 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
 #include <stdlib.h>
-#include <unistd.h>
 
 int					ch_manage_order(t_stacks *stacks, char *order)
 {
@@ -25,7 +24,7 @@ int					ch_manage_order(t_stacks *stacks, char *order)
 	strlen = ft_strlen(order);
 	if (strlen > 4 || order[strlen - 1] != '\n'
 		|| ft_char_in_str(order[0], "spr") == 0)
-		exit(ft_msg_int(2, "Error in manage\n", 0));
+		exit(ft_msg_int(2, "Error\n", 0));
 	ft_strcpy(para, "ch_");
 	*ft_strchr(order, 10) = '\0';
 	ft_strncpy(para + 3, order, strlen);
@@ -38,6 +37,6 @@ int					ch_manage_order(t_stacks *stacks, char *order)
 	else if (order[0] == 'r' && strlen == 4)
 		ps_revrotate(stacks, NULL, para);
 	else
-		exit(ft_msg_int(2, "Error in mana\n", 14));
+		exit(ft_msg_int(2, "Error\n", 14));
 	return (0);
 }

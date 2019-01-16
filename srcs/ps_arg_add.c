@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 12:48:13 by erli              #+#    #+#             */
-/*   Updated: 2019/01/16 11:22:14 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 16:10:34 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static	void	add_int_in_stacks(t_stacks *stacks, int nb, int *len)
 {
 	if (ft_int_in_ptr(nb, stacks->a, *len) == 1)
 	{
-		write(2, "Error doublon\n", 6);
+		write(2, "Error\n", 6);
 		exit(0);
 	}
 	if (stacks->min > nb)
@@ -35,14 +35,14 @@ static	int		ps_is_int(int nb, char *str, int *i, int sgn)
 	if (nb > 214748364 || (nb == 214748364 && (str[*i] > '8'
 		|| (str[*i] == '8' && sgn == 1))))
 	{
-		write(2, "Invalid arguments, please put valid integers.\n", 46);
+		write(2, "Error\n", 6);
 		exit(0);
 	}
 	nb = (nb * 10) + (int)str[*i] - 48;
 	*i += 1;
 	if (str[*i] >= '0' && str[*i] <= '9')
 	{
-		write(2, "Invalid arguments, please put valid integers.\n", 46);
+		write(2, "Error\n", 6);
 		exit(0);
 	}
 	return (nb * sgn);
@@ -105,7 +105,7 @@ void			ps_arg_add(t_stacks *stacks, int argc, char **argv)
 	}
 	if (len != stacks->len)
 	{
-		write(2, "Len!= po_arg_verif\n", 19);
+		write(2, "Error\n", 6);
 		exit(0);
 	}
 	stacks->len_a = len;

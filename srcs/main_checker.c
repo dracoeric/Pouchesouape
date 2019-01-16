@@ -6,14 +6,13 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:55:26 by erli              #+#    #+#             */
-/*   Updated: 2019/01/16 11:16:16 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 16:08:34 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 #include <stdlib.h>
-#include <unistd.h>
 
 static	int		get_options(char *str, int options)
 {
@@ -80,7 +79,7 @@ int				main(int argc, char **argv)
 	argc += 1 - i - (options / 100);
 	argv = argv + i - 1;
 	if (argc == 1 || !(len = ps_arg_verif(argc, argv + (options / 100))))
-		return (ft_msg_int(2, "Error wrong arguments\n", 0));
+		return (ft_msg_int(2, "Error\n", 0));
 	init_stacks(argc, argv, len, options);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 10:06:17 by erli              #+#    #+#             */
-/*   Updated: 2019/01/16 10:48:06 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 16:12:04 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void		sw_add_cmd(t_stacks *stacks, char *cmd, char *para)
 	i = 0;
 	if (cmd == 0 || para == 0)
 	{
-		ft_msg_int(2, "cmd or para is NULL in sw_add_cmd\n", -1);
+		ft_msg_int(2, "Error\n", -1);
 		exit(0);
 	}
 	if (stacks->cursor + ft_strlen(para) < CMD_BUFF_SIZE)

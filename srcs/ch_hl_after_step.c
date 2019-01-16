@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 14:15:23 by erli              #+#    #+#             */
-/*   Updated: 2019/01/14 15:48:19 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 16:03:56 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static	void	hl_top(t_stacks *stacks, int mode, int order)
 	t_pixcoord	pixr;
 	int			*tab;
 
-	ft_printf("after top\n");
 	tab = stacks->b;
 	if (mode == 1)
 		tab = stacks->a;
@@ -43,7 +42,6 @@ static	void	hl_second(t_stacks *stacks, int mode, int order)
 	t_pixcoord	pixr;
 	int			*tab;
 
-	ft_printf("after seconds\n");
 	tab = stacks->b;
 	if (mode == 1)
 		tab = stacks->a;
@@ -66,7 +64,6 @@ static	void	hl_bot(t_stacks *stacks, int mode, int order)
 	int			*tab;
 	int			len;
 
-	ft_printf("after bot\n");
 	tab = stacks->b;
 	len = stacks->len_b;
 	if (mode == 1)
@@ -88,7 +85,6 @@ static	void	hl_bot(t_stacks *stacks, int mode, int order)
 
 void			ch_hl_after_step(t_stacks *stacks, char *order)
 {
-	ft_printf("after order : %s\n");
 	if (stacks == 0 || order == 0)
 		exit(ft_msg_int(2, "stacks or order is null in hl before\n", 0));
 	else if (!ft_strcmp(order, "sa"))
