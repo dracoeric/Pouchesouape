@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 17:25:32 by erli              #+#    #+#             */
-/*   Updated: 2019/01/16 15:36:22 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 15:58:43 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ static	void	sw_median_sort_unload_b(t_stacks *stacks, char *cmd)
 			else
 				ps_rotate(stacks, cmd, "sw_rb");
 		}
-		while (stacks->rotated > 0 && stacks->n_sorted > 0)
+		while (stacks->rotated > 0 && stacks->len_med == 0)
 			ps_revrotate(stacks, cmd, "sw_rrb");
 	}
 }
