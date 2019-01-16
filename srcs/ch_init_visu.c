@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 17:31:51 by erli              #+#    #+#             */
-/*   Updated: 2019/01/16 17:49:59 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 17:53:19 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ int			ch_init_visu(t_stacks *stacks)
 	if (!(stacks->win_ptr = mlx_new_window(stacks->mlx_ptr, W_WIDTH,
 										W_HEIGHT, "Checker")))
 		return (ft_msg_int(2, "Could not create Window\n", 0));
-	if (!(stacks->imga = mlx_img_create(stacks->mlx_ptr, W_WIDTH / 2, W_HEIGHT)))
+	if (!(stacks->imga = mlx_img_create(stacks->mlx_ptr, W_WIDTH / 2,
+			W_HEIGHT)))
 		return (0);
-	if (!(stacks->imgb = mlx_img_create(stacks->mlx_ptr, W_WIDTH / 2, W_HEIGHT)))
+	if (!(stacks->imgb = mlx_img_create(stacks->mlx_ptr, W_WIDTH / 2,
+			W_HEIGHT)))
 		return (0);
 	return (0);
 }
