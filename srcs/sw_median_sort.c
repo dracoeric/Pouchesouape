@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 17:25:32 by erli              #+#    #+#             */
-/*   Updated: 2019/01/16 10:59:40 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 14:30:28 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static	void	sw_fill_3(t_stacks *stacks, char *cmd, int *len)
 		else if (stacks->a[2] < stacks->a[1] && stacks->a[1] < stacks->a[0])
 			sw_chain_cmd(stacks, cmd, "16191");
 	}
-	stacks->n_sorted += 3;
+	stacks->n_sorted += *len;
 	*len = 0;
 }
 
@@ -44,14 +44,15 @@ static	void	sw_median_sort_fill_b(t_stacks *stacks, char *cmd)
 	int med;
 	int len;
 
-	while (stacks->len_a != stacks->n_sorted)
+	while (stacks->len_a - stacks->n_sorted > 1)
 	{
 		len = stacks->len_a - stacks->n_sorted;
 		if (len < 4)
 			sw_fill_3(stacks, cmd, &len);
+		stacks->a_rotated = 0;
 		med = sw_find_median(stacks->a, len);
 		stacks->median_cut[stacks->len_med] = 0;
-		while (stacks->median_cut[stacks->len_med] < (len / 2) + (len % 1))
+		while (stacks->median_cut[stacks->len_med] < (len / 2))
 		{
 			if (stacks->a[0] < med)
 				ps_push(stacks, cmd, "sw_pb");
@@ -59,27 +60,24 @@ static	void	sw_median_sort_fill_b(t_stacks *stacks, char *cmd)
 				ps_rotate(stacks, cmd, "sw_ra");
 		}
 		stacks->len_med = (len >= 4 ? (stacks->len_med) + 1 : stacks->len_med);
-		while ((len / 2) > 0)
-		{
+		while (stacks->a_rotated > 0 && stacks->n_sorted > 0)
 			ps_revrotate(stacks, cmd, "sw_rra");
-			len -= 2;
-		}
 	}
 }
 
 static	void	sw_unload_3(t_stacks *stacks, char *cmd)
 {
-	if (stacks->a[0] < stacks->a[1] && stacks->a[1] < stacks->a[2])
+	if (stacks->b[0] < stacks->b[1] && stacks->b[1] < stacks->b[2])
 		sw_chain_cmd(stacks, cmd, "242414");
-	else if (stacks->a[0] < stacks->a[2] && stacks->a[2] < stacks->a[1])
+	else if (stacks->b[0] < stacks->b[2] && stacks->b[2] < stacks->b[1])
 		sw_chain_cmd(stacks, cmd, "744a4");
-	else if (stacks->a[1] < stacks->a[0] && stacks->a[0] < stacks->a[2])
+	else if (stacks->b[1] < stacks->b[0] && stacks->b[0] < stacks->b[2])
 		sw_chain_cmd(stacks, cmd, "42414");
-	else if (stacks->a[2] < stacks->a[0] && stacks->a[0] < stacks->a[1])
+	else if (stacks->b[2] < stacks->b[0] && stacks->b[0] < stacks->b[1])
 		sw_chain_cmd(stacks, cmd, "2444");
-	else if (stacks->a[1] < stacks->a[2] && stacks->a[2] < stacks->a[0])
+	else if (stacks->b[1] < stacks->b[2] && stacks->b[2] < stacks->b[0])
 		sw_chain_cmd(stacks, cmd, "4244");
-	else if (stacks->a[2] < stacks->a[1] && stacks->a[1] < stacks->a[0])
+	else if (stacks->b[2] < stacks->b[1] && stacks->b[1] < stacks->b[0])
 		sw_chain_cmd(stacks, cmd, "444");
 	stacks->n_sorted += 3;
 	stacks->len_med -= 1;

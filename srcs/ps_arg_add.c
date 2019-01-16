@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 12:48:13 by erli              #+#    #+#             */
-/*   Updated: 2019/01/14 16:30:58 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 11:22:14 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,10 @@ static	void	ps_parse_atoi(t_stacks *stacks, char *str, int *len)
 	int				i;
 	int				sgn;
 
-	sgn = 1;
 	i = 0;
 	while (str[i] != '\0')
 	{
+		sgn = 1;
 		while (str[i] == '\t' || str[i] == '\v' || str[i] == '\n'
 			|| str[i] == '\r' || str[i] == '\f' || str[i] == ' ')
 			i++;

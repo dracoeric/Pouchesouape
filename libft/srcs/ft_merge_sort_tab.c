@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 19:14:18 by erli              #+#    #+#             */
-/*   Updated: 2019/01/16 09:12:53 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 12:33:33 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static	int		*ft_merge_sort(int *tab, int len)
 	len1 = len / 2;
 	len2 = len - len1;
 	tab1 = ft_merge_sort(tab, len1);
-	tab2 = ft_merge_sort(tab + len2, len2);
+	tab2 = ft_merge_sort(tab + len1, len2);
 	return (ft_merge(tab1, len1, tab2, len2));
 }
 
