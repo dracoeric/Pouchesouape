@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:56:47 by erli              #+#    #+#             */
-/*   Updated: 2019/01/16 14:50:07 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 16:18:40 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef	struct	s_stacks
 	int			len_a;
 	int			len_b;
 	int			fd;
-	
+
 	int			min;
 	int			max;
 	int			cursor;
@@ -43,7 +43,7 @@ typedef	struct	s_stacks
 	void		*win_ptr;
 	t_img		*imga;
 	t_img		*imgb;
-	char		auto_play;	
+	char		auto_play;
 	int			order_buf[100];
 	int			back_in_time;
 	int			forward_backward;
@@ -51,7 +51,7 @@ typedef	struct	s_stacks
 	int			*median_cut;
 	int			len_med;
 	int			n_sorted;
-	int			a_rotated;
+	int			rotated;
 }				t_stacks;
 
 int				ps_next_line(int fd, char **order);
