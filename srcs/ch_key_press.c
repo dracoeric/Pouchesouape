@@ -6,7 +6,7 @@
 /*   By: erli <erli@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 11:44:00 by erli              #+#    #+#             */
-/*   Updated: 2019/01/16 15:02:50 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 17:49:31 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int				ch_key_press(int key, void *arg)
 		mlx_destroy_window(stacks->mlx_ptr, stacks->win_ptr);
 		free(stacks->imga);
 		free(stacks->imgb);
-		free(stacks);
 		exit(0);
 	}
 	return (0);
