@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 10:06:17 by erli              #+#    #+#             */
-/*   Updated: 2019/01/09 11:47:36 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 10:48:06 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		sw_add_cmd(t_stacks *stacks, char *cmd, char *para)
 	}
 	else
 	{
-		write(1, cmd, stacks->cursor);
+		write(stacks->fd, cmd, stacks->cursor);
 		stacks->cursor = 0;
 		ft_bzero(cmd, CMD_BUFF_SIZE + 1);
 		sw_add_cmd(stacks, cmd, para);

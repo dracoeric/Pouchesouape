@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 16:46:59 by erli              #+#    #+#             */
-/*   Updated: 2019/01/15 16:41:49 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 10:22:53 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ static	void	small_sort_5(t_stacks *stacks)
 
 void			sw_small_sort(t_stacks *stacks)
 {
-	if (stacks->len == 2)
+	if (stacks->len == 2 && stacks->a[0] > stacks->a[1])
 		write(stacks->fd, "sa\n", 3);
 	else if (stacks->len == 3)
 		small_sort_3(stacks);

@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 19:14:18 by erli              #+#    #+#             */
-/*   Updated: 2019/01/15 12:29:48 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 09:12:53 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ void			ft_merge_sort_tab(int *src, int *dest, size_t len)
 	int *tab;
 
 
+	if (len == 0)
+		return ;
 	if (src != dest)
 		ft_memmove(dest, src, sizeof(int) * len);
 	tab = dest;

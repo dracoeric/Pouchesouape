@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 09:46:01 by erli              #+#    #+#             */
-/*   Updated: 2019/01/14 10:29:38 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 09:02:01 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static	int		sw_push(t_stacks *stacks, char *cmd, char *para)
 	{
 		ch_push(stacks, "ch_pb");
 		sw_add_cmd(stacks, cmd, "pb");
+		stacks->median_cut[stacks->len_med] += 1;
 	}
 	else if (!((ft_strcmp(para, "sw_pa") == 0 && stacks->len_a == 0)
 			|| (ft_strcmp(para, "sw_pb") == 0 && stacks->len_b == 0)))

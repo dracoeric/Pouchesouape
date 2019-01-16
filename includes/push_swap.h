@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:56:47 by erli              #+#    #+#             */
-/*   Updated: 2019/01/14 19:12:46 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/16 10:53:08 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "mlxadd.h"
 
-# define CMD_BUFF_SIZE 4096
+# define CMD_BUFF_SIZE 2048
 # define BUFF_SIZE 40
 # define W_WIDTH 1920
 # define W_HEIGHT 1080
@@ -46,6 +46,10 @@ typedef	struct	s_stacks
 	int			order_buf[100];
 	int			back_in_time;
 	int			forward_backward;
+
+	int			*median_cut;
+	int			len_med;
+	int			n_sorted;
 }				t_stacks;
 
 int				ps_next_line(int fd, char **order);
@@ -74,5 +78,8 @@ void			sw_add_cmd(t_stacks *stacks, char *cmd, char *para);
 void			sw_small_sort(t_stacks *stacks);
 void			sw_sort_stacks(t_stacks *stacks);
 int				sw_check_stacks(t_stacks *stacks);
+int				sw_find_median(int *tab, int len);
+void			sw_median_sort(t_stacks *stacks);
+void			sw_chain_cmd(t_stacks *stacks, char *cmd, char *list);
 int				loop_do_orders(void *arg);
 #endif

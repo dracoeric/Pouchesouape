@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sw_sort_stacks.c                                   :+:      :+:    :+:   */
+/*   sw_find_median.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/14 16:36:42 by erli              #+#    #+#             */
-/*   Updated: 2019/01/16 10:22:48 by erli             ###   ########.fr       */
+/*   Created: 2019/01/16 09:06:36 by erli              #+#    #+#             */
+/*   Updated: 2019/01/16 10:11:00 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
+#include "libft.h"
 
-void			sw_sort_stacks(t_stacks *stacks)
+static	int	find_median(int *tab, int len)
 {
-	if (sw_check_stacks(stacks) == 1 || stacks->len == 1)
-		exit(0);
-	if (stacks->len <= 5)
-		sw_small_sort(stacks);
+	int	sorted[len];
+
+	ft_merge_sort_tab(tab, sorted, len);
+	return (sorted[len / 2]);
+}
+
+int			sw_find_median(int *tab, int len)
+{
+	if (len <= 0)
+		return (0);
 	else
-		sw_median_sort(stacks);
-	exit(0);
+		return (find_median(tab, len));
 }
