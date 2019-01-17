@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 09:46:01 by erli              #+#    #+#             */
-/*   Updated: 2019/01/10 11:58:18 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/17 13:23:12 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static	int		ch_swap(t_stacks *stacks, char *para)
 	}
 	else if (!((ft_strcmp(para, "ch_sa") == 0 && stacks->len_a < 2)
 			|| (ft_strcmp(para, "ch_sb") == 0 && stacks->len_b < 2)))
-		exit(ft_msg_int(2, "Invalid instruction un ch_swap\n", 0));
+		exit(ft_msg_int(2, "Error\n", 0));
 	return (0);
 }
 
@@ -61,7 +61,7 @@ static	int		sw_swap(t_stacks *stacks, char *cmd, char *para)
 	}
 	else if (!((ft_strcmp(para, "sw_sa") == 0 && stacks->len_a < 2)
 			|| (ft_strcmp(para, "sw_sb") == 0 && stacks->len_b < 2)))
-		exit(ft_msg_int(2, "Invalid instruction un sw_swap\n", 0));
+		exit(ft_msg_int(2, "Error\n", 0));
 	return (0);
 }
 
@@ -77,6 +77,6 @@ int				ps_swap(t_stacks *stacks, char *cmd, char *para)
 	if (ft_strncmp(para, "sw", 2) == 0)
 		return (sw_swap(stacks, cmd, para));
 	else
-		exit(ft_msg_int(2, "Invalid instruction in swap/n", 0));
+		exit(ft_msg_int(2, "Error\n", 0));
 	return (0);
 }

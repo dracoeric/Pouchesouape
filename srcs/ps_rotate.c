@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 09:46:01 by erli              #+#    #+#             */
-/*   Updated: 2019/01/16 15:17:16 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/17 13:24:03 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static	int		ch_rotate(t_stacks *stacks, char *para)
 	}
 	else if (!((ft_strcmp(para, "ch_ra") == 0 && stacks->len_a < 2)
 			|| (ft_strcmp(para, "ch_rb") == 0 && stacks->len_b < 2)))
-		return (ft_msg_int(2, "Invalid instruction un ch_rotate\n", -1));
+		return (ft_msg_int(2, "Error\n", -1));
 	return (0);
 }
 
@@ -65,7 +65,7 @@ static	int		sw_rotate(t_stacks *stacks, char *cmd, char *para)
 	}
 	else if (!((ft_strcmp(para, "sw_ra") == 0 && stacks->len_a < 2)
 			|| (ft_strcmp(para, "sw_rb") == 0 && stacks->len_b < 2)))
-		return (ft_msg_int(2, "Invalid instruction un sw_rotate\n", -1));
+		return (ft_msg_int(2, "Error\n", -1));
 	return (0);
 }
 
@@ -81,5 +81,5 @@ int				ps_rotate(t_stacks *stacks, char *cmd, char *para)
 	if (ft_strncmp(para, "sw", 2) == 0)
 		return (sw_rotate(stacks, cmd, para));
 	else
-		return (ft_msg_int(2, "Invalid instruction in rotate/n", -1));
+		return (ft_msg_int(2, "Error\n", -1));
 }

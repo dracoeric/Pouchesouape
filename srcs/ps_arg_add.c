@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 12:48:13 by erli              #+#    #+#             */
-/*   Updated: 2019/01/16 16:10:34 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/17 13:03:33 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,9 @@ static	int		ps_atoi(char *str, int *i, int sgn)
 		if (nb_len == 9)
 			return (ps_is_int(nb, str, i, sgn));
 		nb = (nb * 10) + (int)str[*i] - 48;
+		if (!(nb == 0 && str[*i] == '0'))
+			nb_len++;
 		*i += 1;
-		nb_len++;
 	}
 	return (sgn * nb);
 }

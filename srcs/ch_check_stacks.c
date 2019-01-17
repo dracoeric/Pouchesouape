@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 19:14:36 by erli              #+#    #+#             */
-/*   Updated: 2019/01/16 16:06:50 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/17 12:58:24 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ int		ch_check_stacks(t_stacks *stacks)
 		write(1, "OK\n", 3);
 	else
 	{
+		if (stacks->len_b != 0)
+		{
+			write(1, "KO\n", 3);
+			return (0);
+		}
 		while (i + 1 < stacks->len)
 		{
 			if ((stacks->a)[i] > (stacks->a)[i + 1])

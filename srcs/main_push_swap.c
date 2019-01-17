@@ -6,13 +6,14 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:55:26 by erli              #+#    #+#             */
-/*   Updated: 2019/01/16 17:25:04 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/17 13:20:51 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
 #include <fcntl.h>
+#include <stdlib.h>
 
 static	int		get_options(char *str, int options)
 {
@@ -23,8 +24,12 @@ static	int		get_options(char *str, int options)
 	{
 		if (str[i] == 'f' && (options / 100) == 0)
 			options += 100;
+		else
+			exit(ft_msg_int(2, "Error\n", 0));
 		i++;
 	}
+	if (i == 1)
+		exit(ft_msg_int(2, "Error\n", 0));
 	return (options);
 }
 
@@ -65,17 +70,16 @@ int				main(int argc, char **argv)
 	while (i < argc && argv[i][0] == '-' && loop == 1)
 	{
 		if (ft_str_made_of_str(argv[i], "-f") == 1)
-		{
-			options = get_options(argv[i], options);
-			i++;
-		}
+			options = get_options(argv[i++], options);
 		else
 			loop = 0;
 	}
 	argc += 1 - i - (options / 100);
 	argv = argv + i - 1;
-	if (argc == 1 || !(len = ps_arg_verif(argc, argv + (options / 100))))
-		return (ft_msg_int(2, "Error wrong arguments\n", 0));
+	if (argc == 1)
+		return (0);
+	if (!(len = ps_arg_verif(argc, argv + (options / 100))))
+		return (ft_msg_int(2, "Error\n", 0));
 	init_stacks(argc, argv, len, options);
 	return (0);
 }

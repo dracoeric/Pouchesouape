@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 09:46:01 by erli              #+#    #+#             */
-/*   Updated: 2019/01/16 09:02:01 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/17 13:22:55 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static	int		ch_push(t_stacks *stacks, char *para)
 	}
 	else if (!((ft_strcmp(para, "ch_pb") == 0 && stacks->len_a == 0)
 			|| (ft_strcmp(para, "ch_pa") == 0 && stacks->len_b == 0)))
-		return (ft_msg_int(2, "Invalid instruction un ch_push\n", -1));
+		return (ft_msg_int(2, "Error\n", -1));
 	return (0);
 }
 
@@ -55,7 +55,7 @@ static	int		sw_push(t_stacks *stacks, char *cmd, char *para)
 	}
 	else if (!((ft_strcmp(para, "sw_pa") == 0 && stacks->len_a == 0)
 			|| (ft_strcmp(para, "sw_pb") == 0 && stacks->len_b == 0)))
-		return (ft_msg_int(2, "Invalid instruction un sw_push\n", -1));
+		return (ft_msg_int(2, "Error\n", -1));
 	return (0);
 }
 
@@ -71,5 +71,5 @@ int				ps_push(t_stacks *stacks, char *cmd, char *para)
 	if (ft_strncmp(para, "sw", 2) == 0)
 		return (sw_push(stacks, cmd, para));
 	else
-		return (ft_msg_int(2, "Invalid instruction in push/n", -1));
+		return (ft_msg_int(2, "Error\n", -1));
 }
