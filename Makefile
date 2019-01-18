@@ -6,7 +6,7 @@
 #    By: erli <erli@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/08 14:34:35 by erli              #+#    #+#              #
-#    Updated: 2019/01/18 10:31:17 by erli             ###   ########.fr        #
+#    Updated: 2019/01/18 10:39:57 by erli             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,8 +22,8 @@ SRCS1		=		main_checker.c			ps_swap.c				ps_move.c		\
 					ch_manage_order.c		ch_init_visu.c			ch_do_orders.c	\
 					ch_win_close.c			ch_key_press.c			ch_draw_step.c	\
 					ch_hl_after_step.c		ch_colour_nb.c			ch_autoplay.c	\
-					ch_find_px.c			ch_num_put.c			sw_add_cmd.c	\
-					ch_check_stacks.c		ch_loop_do_orders.c						\
+					ch_line_put_img.c		ch_num_put.c			sw_add_cmd.c	\
+					ch_check_stacks.c		ch_loop_do_orders.c		ch_find_px.c	\
 																					\
 					mlx_img_create.c		mlx_line_put_img.c						\
 					mlx_str_to_colour.c		mlx_pixel_put_img.c

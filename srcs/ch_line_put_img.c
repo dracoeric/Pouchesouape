@@ -6,7 +6,7 @@
 /*   By: erli <erli@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 16:33:10 by erli              #+#    #+#             */
-/*   Updated: 2019/01/11 12:15:58 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/18 10:55:17 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,69 +15,32 @@
 static	void	draw_line_case1(t_img *img, t_pixcoord *a,
 			t_pixcoord *b, t_colour (*f)(int))
 {
-	int x;
-	int x_diff;
-	int y;
-	int z;
-	int x_pro;
+	int			i;
+	int			j;
+	t_colour	*int_ptr;
 
-	x = a->px;
-	x_diff = b->px - a->px;
-	while (x <= b->px)
+	if (a->px < 0 || b->px < 0 || a->py < 0
+		|| a->px > img->size_line / img->bypp
+		|| a->px > img->size_line / img->bypp || a->py > img->nb_line)
+		return ;
+	i = a->px * (img->bypp) + a->py * img->size_line;
+	j = b->px * (img->bypp) + b->py * img->size_line;
+	while (i <= j)
 	{
-		x_pro = x - a->px;
-		if (x_diff != 0)
+		if (i > img->size_line * a->py && i < (img->size_line * (a->py + 1)))
 		{
-			z = a->pz + x_pro * (b->pz - a->pz) / x_diff;
-			y = a->py + x_pro * (b->py - a->py) / x_diff;
+			int_ptr = (t_colour *)((img->str) + i);
+			int_ptr[0] = f(a->pz);
 		}
-		else
-		{
-			z = a->pz;
-			y = a->py;
-		}
-		mlx_pixel_put_img(img, x, y, f(z));
-		x++;
-	}
-}
-
-static	void	draw_line_case2(t_img *img, t_pixcoord *a,
-			t_pixcoord *b, t_colour (*f)(int))
-{
-	int x;
-	int y_diff;
-	int y;
-	int z;
-	int	y_pro;
-
-	y = a->py;
-	y_diff = b->py - a->py;
-	while (y <= b->py)
-	{
-		y_pro = y - a->py;
-		z = a->pz + y_pro * (b->pz - a->pz) / y_diff;
-		x = a->px + y_pro * (b->px - a->px) / y_diff;
-		mlx_pixel_put_img(img, x, y, f(z));
-		y++;
+		i += 4;
 	}
 }
 
 void			ch_line_put_img(t_img *img, t_pixcoord *a,
 			t_pixcoord *b, t_colour (*f)(int))
 {
-	int	y_diff;
-	int x_diff;
-
-	if (a == 0 || b == 0)
+	if (img == 0 || a == 0 || b == 0)
 		return ;
-	y_diff = b->py - a->py;
-	x_diff = b->px - a->px;
-	if (x_diff >= 0 && x_diff >= (y_diff < 0 ? -y_diff : y_diff))
-		draw_line_case1(img, a, b, f);
-	else if (x_diff < 0 && -x_diff >= (y_diff < 0 ? -y_diff : y_diff))
-		draw_line_case1(img, b, a, f);
-	else if (y_diff > 0 && y_diff >= (x_diff < 0 ? -x_diff : x_diff))
-		draw_line_case2(img, a, b, f);
-	else
-		draw_line_case2(img, b, a, f);
+	draw_line_case1(img, a, b, f);
+	return ;
 }

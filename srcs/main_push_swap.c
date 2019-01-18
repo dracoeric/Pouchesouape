@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:55:26 by erli              #+#    #+#             */
-/*   Updated: 2019/01/17 13:20:51 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/17 13:28:47 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static	int		init_stacks(int argc, char **argv, int len, int options)
 	stacks->max = -2147483648;
 	stacks->options = options;
 	stacks->fd = 1;
+	stacks->simult = 0;
 	if (options / 100 == 1)
 	{
 		stacks->fd = open(argv[1], O_WRONLY | O_APPEND | O_CREAT, 0644);

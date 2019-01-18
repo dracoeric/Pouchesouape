@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:56:47 by erli              #+#    #+#             */
-/*   Updated: 2019/01/16 16:18:40 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/18 10:39:11 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "mlxadd.h"
 
-# define CMD_BUFF_SIZE 5
+# define CMD_BUFF_SIZE 512
 # define BUFF_SIZE 40
 # define W_WIDTH 1920
 # define W_HEIGHT 1080
@@ -52,6 +52,7 @@ typedef	struct	s_stacks
 	int			len_med;
 	int			n_sorted;
 	int			rotated;
+	int			simult;
 }				t_stacks;
 
 int				ps_next_line(int fd, char **order);
@@ -69,6 +70,8 @@ int				ch_win_close(void *arg);
 int				ch_key_press(int key, void *arg);
 int				ch_autoplay(void *arg);
 void			ch_draw_step(t_stacks *stacks, char *order, int mode);
+void			ch_line_put_img(t_img *img, t_pixcoord *a,
+					t_pixcoord *b, t_colour (*f)(int));
 t_colour		ch_colour_nb(int nb);
 int				ch_check_stacks(t_stacks *stacks);
 void			ch_find_px(t_stacks *stacks, int nb, t_pixcoord *pixl,

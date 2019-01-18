@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 09:47:50 by erli              #+#    #+#             */
-/*   Updated: 2019/01/14 15:04:53 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/18 11:00:29 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,25 @@ static	void	ch_manage_old_order(t_stacks *stacks, char *order)
 	ft_memmove((stacks->order_buf + 1), stacks->order_buf, 4 * 99);
 	if (ft_strcmp(order, "sa\n") == 0)
 		stacks->order_buf[0] = 1;
-	if (ft_strcmp(order, "sb\n") == 0)
+	else if (ft_strcmp(order, "sb\n") == 0)
 		stacks->order_buf[0] = 2;
-	if (ft_strcmp(order, "ss\n") == 0)
+	else if (ft_strcmp(order, "ss\n") == 0)
 		stacks->order_buf[0] = 3;
-	if (ft_strcmp(order, "pa\n") == 0)
+	else if (ft_strcmp(order, "pa\n") == 0)
 		stacks->order_buf[0] = 4;
-	if (ft_strcmp(order, "pb\n") == 0)
+	else if (ft_strcmp(order, "pb\n") == 0)
 		stacks->order_buf[0] = 5;
-	if (ft_strcmp(order, "ra\n") == 0)
+	else if (ft_strcmp(order, "ra\n") == 0)
 		stacks->order_buf[0] = 6;
-	if (ft_strcmp(order, "rb\n") == 0)
+	else if (ft_strcmp(order, "rb\n") == 0)
 		stacks->order_buf[0] = 7;
-	if (ft_strcmp(order, "rr\n") == 0)
+	else if (ft_strcmp(order, "rr\n") == 0)
 		stacks->order_buf[0] = 8;
-	if (ft_strcmp(order, "rra\n") == 0)
+	else if (ft_strcmp(order, "rra\n") == 0)
 		stacks->order_buf[0] = 9;
-	if (ft_strcmp(order, "rrb\n") == 0)
+	else if (ft_strcmp(order, "rrb\n") == 0)
 		stacks->order_buf[0] = 10;
-	if (ft_strcmp(order, "rrr\n") == 0)
+	else if (ft_strcmp(order, "rrr\n") == 0)
 		stacks->order_buf[0] = 11;
 }
 
@@ -47,27 +47,27 @@ static	char	*ch_get_old_order(t_stacks *stacks, char *order, int dir)
 {
 	if (stacks->order_buf[stacks->back_in_time] == 1)
 		ft_strcpy(order, "sa\n");
-	if (stacks->order_buf[stacks->back_in_time] == 2)
+	else if (stacks->order_buf[stacks->back_in_time] == 2)
 		ft_strcpy(order, "sb\n");
-	if (stacks->order_buf[stacks->back_in_time] == 3)
+	else if (stacks->order_buf[stacks->back_in_time] == 3)
 		ft_strcpy(order, "ss\n");
-	if (stacks->order_buf[stacks->back_in_time] == 4)
+	else if (stacks->order_buf[stacks->back_in_time] == 4)
 		ft_strcpy(order, (dir == 0 ? "pa\n" : "pb\n"));
-	if (stacks->order_buf[stacks->back_in_time] == 5)
+	else if (stacks->order_buf[stacks->back_in_time] == 5)
 		ft_strcpy(order, (dir == 0 ? "pb\n" : "pa\n"));
-	if (stacks->order_buf[stacks->back_in_time] == 6)
+	else if (stacks->order_buf[stacks->back_in_time] == 6)
 		ft_strcpy(order, (dir == 0 ? "ra\n" : "rra\n"));
-	if (stacks->order_buf[stacks->back_in_time] == 7)
+	else if (stacks->order_buf[stacks->back_in_time] == 7)
 		ft_strcpy(order, (dir == 0 ? "rb\n" : "rrb\n"));
-	if (stacks->order_buf[stacks->back_in_time] == 8)
+	else if (stacks->order_buf[stacks->back_in_time] == 8)
 		ft_strcpy(order, (dir == 0 ? "rr\n" : "rrr\n"));
-	if (stacks->order_buf[stacks->back_in_time] == 9)
+	else if (stacks->order_buf[stacks->back_in_time] == 9)
 		ft_strcpy(order, (dir == 0 ? "rra\n" : "ra\n"));
-	if (stacks->order_buf[stacks->back_in_time] == 10)
+	else if (stacks->order_buf[stacks->back_in_time] == 10)
 		ft_strcpy(order, (dir == 0 ? "rrb\n" : "rb\n"));
-	if (stacks->order_buf[stacks->back_in_time] == 11)
+	else if (stacks->order_buf[stacks->back_in_time] == 11)
 		ft_strcpy(order, (dir == 0 ? "rrr\n" : "rr\n"));
-	if (stacks->order_buf[stacks->back_in_time] == 0)
+	else if (stacks->order_buf[stacks->back_in_time] == 0)
 		(stacks->back_in_time)--;
 	return (order);
 }
