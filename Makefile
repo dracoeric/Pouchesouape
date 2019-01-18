@@ -6,7 +6,7 @@
 #    By: erli <erli@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/08 14:34:35 by erli              #+#    #+#              #
-#    Updated: 2019/01/18 10:39:57 by erli             ###   ########.fr        #
+#    Updated: 2019/01/18 18:13:37 by erli             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -38,7 +38,7 @@ SRCS2		=		main_push_swap.c		ps_swap.c				ps_move.c		\
 OBJS1		=		$(addprefix $(OBJSDIR)/, $(SRCS1:.c=.o))
 OBJS2		=		$(addprefix $(OBJSDIR)/, $(SRCS2:.c=.o))
 
-CC			=		gcc -g
+CC			=		gcc
 
 CFLAG		=		-Wall -Werror -Wextra
 
