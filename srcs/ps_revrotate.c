@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 09:46:01 by erli              #+#    #+#             */
-/*   Updated: 2019/01/17 13:23:51 by erli             ###   ########.fr       */
+/*   Updated: 2019/01/18 11:17:29 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static	int		ch_revrotate(t_stacks *stacks, char *para)
 	}
 	else if (!((ft_strcmp(para, "ch_rra") == 0 && stacks->len_a < 2)
 			|| (ft_strcmp(para, "ch_rrb") == 0 && stacks->len_b < 2)))
-		return (ft_msg_int(2, "Error\n", -1));
+		exit(ft_msg_int(2, "Error\n", -1));
 	return (0);
 }
 
@@ -63,7 +63,7 @@ static	int		sw_revrotate(t_stacks *stacks, char *cmd, char *para)
 	}
 	else if (!((ft_strcmp(para, "sw_rra") == 0 && stacks->len_a < 2)
 			|| (ft_strcmp(para, "sw_rrb") == 0 && stacks->len_b < 2)))
-		return (ft_msg_int(2, "Error\n", -1));
+		exit(ft_msg_int(2, "Error\n", -1));
 	return (0);
 }
 
@@ -79,5 +79,6 @@ int				ps_revrotate(t_stacks *stacks, char *cmd, char *para)
 	if (ft_strncmp(para, "sw", 2) == 0)
 		return (sw_revrotate(stacks, cmd, para));
 	else
-		return (ft_msg_int(2, "Error\n", -1));
+		exit(ft_msg_int(2, "Error\n", -1));
+	return (0);
 }
